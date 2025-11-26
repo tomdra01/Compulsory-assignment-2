@@ -3,10 +3,21 @@ from dotenv import load_dotenv
 import autogen
 from research_tools import search_research_papers
 
-load_dotenv()
+# --- WINDOWS FIX STARTS HERE ---
+# 1. Get the path to the folder where main.py is running
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# 2. Tell Python specifically to look for .env in THAT folder
+env_path = os.path.join(script_dir, '.env')
+
+# 3. Load it. 'verbose=True' will print a warning if it fails.
+load_dotenv(dotenv_path=env_path, verbose=True)
+# --- WINDOWS FIX ENDS HERE ---
+
 api_key = os.getenv("MISTRAL_API_KEY")
 
 if not api_key:
+    print(f"DEBUG: Python looked for the file here: {env_path}")
     print("Error: MISTRAL_API_KEY not found. Please check your .env file.")
     exit(1)
 
