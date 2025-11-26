@@ -1,0 +1,10 @@
+# Specific fork for rate limiting support
+git+https://github.com/patrickstolc/autogen.git@0.2#egg=autogen-agentchat
+autogen==0.3.1
+mistralai==1.2.3
+ollama==0.3.3
+fix-busted-json==0.0.18
+# We need requests to query the research paper API later
+requests
+# We need python-dotenv to manage the API key securely
+python-dotenv
